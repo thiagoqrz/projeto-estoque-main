@@ -1,0 +1,50 @@
+<div class="container">
+    <div *ngIf="messageerr" class="alert alert-danger" role="alert">
+       {{messageerr}}
+    </div>
+    <div *ngIf="messagesuccess" class="alert alert-success" role="alert">
+        {{messagesuccess}}
+    </div>
+    <h3>Cadastro de um novo produto</h3>
+    <form  [formGroup]="prodForm" (ngSubmit)="submit()">
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="name" class="form-label">Produto: </label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Produto">
+            </div>
+            <div class="col-lg-4" *ngIf="!IdProduct">
+                <label for="img" class="form-label">Imagem: </label>
+                <input type="file" class="form-control" (change)="onChangeImg($event)" formControlName="img" placeholder="img">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <label for="description" class="form-label">Descrição: </label>
+                <textarea class="form-control" rows="3" formControlName="description" placeholder="Descrição"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <label for="" class="form-label">Estoque</label>
+                <input type="number" class="form-control" formControlName="inventory" placeholder="Estoque">
+            </div>
+            <div class="col-lg-2">
+                <label for="" class="form-label">Status</label>
+                <select class="form-select"  formControlName="status"  aria-label="Default select example">
+                    <option selected disabled>Selecione</option>
+                    <option value="1">Ativo</option>
+                    <option value="0">Inativo</option>
+                  </select>
+            </div>
+            <div class="col-lg-3">
+                <label for="" class="form-label">Preço</label>
+                <input type="number" name="price" min="0" value="0" step="any" class="form-control" formControlName="value" placeholder="Preço">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 mt-2">
+                <button class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </form>
+</div>
